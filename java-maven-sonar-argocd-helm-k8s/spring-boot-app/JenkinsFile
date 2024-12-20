@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      docker restart maven-neelima-docker-agent
+      docker restart $(docker ps -a -q)
       image 'maven-neelima-docker-agent:v1'
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
     }
